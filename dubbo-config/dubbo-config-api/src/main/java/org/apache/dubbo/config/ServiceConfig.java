@@ -313,7 +313,7 @@ public class ServiceConfig<T> extends ServiceConfigBase<T> {
         );
 
         List<URL> registryURLs = ConfigValidationUtils.loadRegistries(this, true);
-
+        //todo dodou registry://127.0.0.1:2181/org.apache.dubbo.registry.RegistryService?application=demo-provider&dubbo=2.0.2&metadata-type=remote&pid=83052&qos.port=22222&registry=zookeeper&timestamp=1632147137223
         for (ProtocolConfig protocolConfig : protocols) {
             String pathKey = URL.buildKey(getContextPath(protocolConfig)
                     .map(p -> p + "/" + path)
@@ -322,7 +322,7 @@ public class ServiceConfig<T> extends ServiceConfigBase<T> {
             repository.registerService(pathKey, interfaceClass);
             // TODO, uncomment this line once service key is unified
             serviceMetadata.setServiceKey(pathKey);
-            doExportUrlsFor1Protocol(protocolConfig, registryURLs);
+            doExportUrlsFor1Protocol(protocolConfig, registryURLs); // <dubbo:protocol name="dubbo" /> registryUrls:registry://127.0.0.1:2181/org.apache.dubbo.registry.RegistryService?application=demo-provider&dubbo=2.0.2&metadata-type=remote&pid=83052&qos.port=22222&registry=zookeeper&timestamp=1632147137223
         }
     }
 
@@ -516,8 +516,8 @@ public class ServiceConfig<T> extends ServiceConfigBase<T> {
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
-    /**
-     * always export injvm
+    /** local:injvm://127.0.0.1/org.apache.dubbo.demo.DemoService?anyhost=true&application=demo-provider&bind.ip=192.168.199.177&bind.port=20880&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=org.apache.dubbo.demo.DemoService&metadata-type=remote&methods=sayHello,sayHelloAsync&pid=83052&qos.port=22222&release=&side=provider&timestamp=1632147926723
+     * always export injvm //todo url: dubbo://192.168.199.177:20880/org.apache.dubbo.demo.DemoService?anyhost=true&application=demo-provider&bind.ip=192.168.199.177&bind.port=20880&deprecated=false&dubbo=2.0.2&dynamic=true&generic=false&interface=org.apache.dubbo.demo.DemoService&metadata-type=remote&methods=sayHello,sayHelloAsync&pid=83052&qos.port=22222&release=&side=provider&timestamp=1632147926723
      */
     private void exportLocal(URL url) {
         URL local = URLBuilder.from(url)
