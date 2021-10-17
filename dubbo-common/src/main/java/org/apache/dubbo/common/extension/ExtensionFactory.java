@@ -18,6 +18,7 @@ package org.apache.dubbo.common.extension;
 
 /**
  * ExtensionFactory
+ * 根据扩展点类型和名称来获取扩展类型
  */
 @SPI
 public interface ExtensionFactory {
