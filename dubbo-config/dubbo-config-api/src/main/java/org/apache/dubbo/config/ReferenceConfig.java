@@ -150,6 +150,7 @@ public class ReferenceConfig<T> extends ReferenceConfigBase<T> {
         this.repository = ApplicationModel.getServiceRepository();
     }
 
+    //将bean对象转化成URL格式，所有属性转化成URL参数
     public synchronized T get() {
         if (destroyed) {
             throw new IllegalStateException("The invoker of ReferenceConfig(" + url + ") has already destroyed!");

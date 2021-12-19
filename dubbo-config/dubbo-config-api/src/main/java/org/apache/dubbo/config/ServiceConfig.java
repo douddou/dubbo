@@ -180,6 +180,7 @@ public class ServiceConfig<T> extends ServiceConfigBase<T> {
         dispatch(new ServiceConfigUnexportedEvent(this));
     }
 
+    //将bean对象转化成URL格式，所有属性转化成URL参数
     public synchronized void export() {
         if (!shouldExport()) {
             return;
